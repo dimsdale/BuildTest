@@ -31,12 +31,12 @@ public class MainController {
     private BuildService buildService;
     @Autowired
     private InviteBuildService inviteBuildService;
+    private User currentUser;
 
     @ModelAttribute("invitebuild")
     public InviteBuild loadEmptyInviteBuild(){
         return new InviteBuild();
     }
-    private User currentUser;
 
     @ModelAttribute("build")
     public Build loadEmptyBuild(){
@@ -44,7 +44,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/new")
-    public String create(Model model)
+    public String create()
     {
         return "create";
     }
@@ -58,17 +58,17 @@ public class MainController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String start(Model model){
+    public String start(){
         return "main";
     }
 
     @RequestMapping( value = "/login", method = RequestMethod.GET)
-    public String loginPage(Model model){
+    public String loginPage(){
         return "login";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String registerPage(Model model){
+    public String registerPage(){
         return "/register";
     }
 
@@ -80,6 +80,10 @@ public class MainController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addUser(@Valid User user, BindingResult result)
     {
+        if (result.hasErrors())
+        {
+            return "register";
+        }
         userService.createUser(user);
         return "/index";
     }
