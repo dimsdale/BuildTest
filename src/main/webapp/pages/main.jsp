@@ -31,7 +31,6 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/register">Register</a> </li>
                         <li><a href="/login">Login</a> </li>
-                        <li><a href="#">About</a> </li>
                     </ul>
                 </div>
             </div>

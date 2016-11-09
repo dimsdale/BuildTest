@@ -55,8 +55,8 @@
                             <spring:errors path="login" cssClass="alert alert-error" />
                             <spring:input path="password" id="password" type="password"  placeholder="password"/>
                             <spring:errors path="password" cssClass="alert alert-error" />
-                            <spring:input path="confirmPassword" id="confirmPassword" type="password"  placeholder="Confirm Password"/>
-                            <spring:errors path="confirmPassword" cssClass="alert alert-error" />
+                            <spring:input path="telephone" id="telephone"  placeholder="Telephone"/>
+                            <spring:errors path="telephone" cssClass="alert alert-error" />
                             <spring:input path="fio" id="fio" placeholder="Name, surname, fathername"/>
                             <spring:errors path="fio" cssClass="alert alert-error" />
                             <input type="submit" id="submitUser" value="Register" class="btn btn-block btn-success">

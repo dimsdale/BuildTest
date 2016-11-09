@@ -29,7 +29,7 @@ import java.util.concurrent.TimeUnit;
 public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        super.addResourceHandlers(registry);
+        registry.addResourceHandler("/pages/**").addResourceLocations("/pages/");
     }
 
     @Bean(name = "userService")

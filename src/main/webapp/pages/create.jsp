@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>New Contact</title>
+    <title>New Build</title>
     <style>
         .error { color: red; font-size: 0.9em; font-weight: bold; }
     </style>
@@ -13,22 +13,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-static-top">
-    <nav class="navbar-inner">
-        <a class="brand">Contact Book</a>
-        <ul class="nav">
-            <li class="divider-vertical"></li>
-            <li><a href="/index"><i class="icon-home"></i>Home </a></li>
-            <li><a href="/logout">Logout</a></li>
-            <li class="dropdown pull-right">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b> </a>
-                <ul class="dropdown-menu">
-                    <li><a href="/project">Project</a></li>
-                    <li><a href="/me"></a>Me </li>
+div class="container">
+<div class="row">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target="#menu">
+                    <span class="sr-only">Open navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Main</a> </li>
+                    <li><a href="/new">New Build</a> </li>
+                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/my">My Builds</a></li>
                 </ul>
-            </li>
-        </ul>
-    </nav>
+                <form class="navbar-form pull-right" action="search" method="post">
+                    <input type="text" class="span2 search-query" placeholder="Input text of search" />
+                    <button type="submit" class="btn">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 <sec:authorize access="!isAuthenticated()">
     <c:redirect url="/main"/>
@@ -38,21 +50,11 @@
     <div class="row">
         <div class="well span4 offset4">
 
-            <spring:form action="addContact" method="post" modelAttribute="contact">
+            <spring:form action="addBuild" method="post" modelAttribute="build">
                 <h2>Insert data</h2>
-                <spring:input path="surname" id="surname" placeholder="surname"/>
-                <spring:errors path="surname" cssClass="error" />
-                <spring:input path="name" id="name" placeholder="name"/>
-                <spring:errors path="name" cssClass="error" />
-                <spring:input path="byFatherName" id="byFatherName" placeholder="fathername"/>
-                <spring:errors path="byFatherName" cssClass="error" />
-                <spring:input path="mobileTel" id="mobileTel" placeholder="mobileTel"/>
-                <spring:errors path="mobileTel" cssClass="error" />
-                <spring:input path="homeTel" id="homeTel" placeholder="homeTel"/>
-                <spring:errors path="homeTel" cssClass="error" />
-                <spring:input path="e_mail" id="e_mail" placeholder="e-mail"/>
-                <spring:errors path="e_mail" cssClass="error" />
-                <input type="submit" id="submitContact"  value="Add" class="btn btn-success">
+                <spring:input path="description" id="description" placeholder="description"/>
+                <spring:errors path="description" cssClass="error" />
+                <input type="submit" id="submitBuild"  value="Add" class="btn btn-success">
             </spring:form>
         </div>
         </div>

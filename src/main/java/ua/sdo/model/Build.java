@@ -29,6 +29,10 @@ public class Build {
         this.id = id;
     }
 
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -39,10 +43,6 @@ public class Build {
 
     public User getOwner() {
         return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
     }
 
     public List<InviteBuild> getInviteBuild() {

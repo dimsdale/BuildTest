@@ -1,11 +1,10 @@
 package ua.sdo.model;
 
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity @Table(name = "invite_build")
 public class InviteBuild implements Serializable {
@@ -24,8 +23,10 @@ public class InviteBuild implements Serializable {
     private User user;
 
     @Column(name = "date_invite")
-    @Type(type = "timestamp")
-    private Date dateInvite;
+    private LocalDate dateInvite;
+
+    @Column(name = "time_invite")
+    private LocalTime timeInvite;
 
     public int getId() {
         return id;
@@ -51,11 +52,19 @@ public class InviteBuild implements Serializable {
         this.user = user;
     }
 
-    public Date getDateInvite() {
+    public LocalDate getDateInvite() {
         return dateInvite;
     }
 
-    public void setDateInvite(Date dateInvite) {
+    public void setDateInvite(LocalDate dateInvite) {
         this.dateInvite = dateInvite;
+    }
+
+    public LocalTime getTimeInvite() {
+        return timeInvite;
+    }
+
+    public void setTimeInvite(LocalTime timeInvite) {
+        this.timeInvite = timeInvite;
     }
 }

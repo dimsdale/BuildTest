@@ -13,4 +13,8 @@ public interface BuildRepository extends JpaRepository<Build, Integer> {
 
     @Query("select c from Build c where c.owner.id = :id")
     List<Build> findByIdUser(@Param("id") int id);
+
+    @Query("select c from Build c where c.id = :id")
+    Build findById(@Param("id") int id);
+
 }

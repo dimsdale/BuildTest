@@ -23,4 +23,16 @@ public class BuildServiceImpl implements BuildService {
     public List<Build> findByIdUser(int id) {
         return buildRepository.findByIdUser(id);
     }
+
+    @Override
+    public List<Build> getAllBuilds() {
+        return  buildRepository.findAll();
+    }
+
+    @Override
+    public Build findById(int id) {
+        return buildRepository.findById(id);
+    }
+
+
 }

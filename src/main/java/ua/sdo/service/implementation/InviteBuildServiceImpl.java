@@ -3,7 +3,6 @@ package ua.sdo.service.implementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.sdo.model.InviteBuild;
-import ua.sdo.model.User;
 import ua.sdo.repository.InviteBuildRepository;
 import ua.sdo.service.InviteBuildService;
 
@@ -21,7 +20,7 @@ public class InviteBuildServiceImpl implements InviteBuildService {
     }
 
     @Override
-    public List<User> findInviteUsersByIdBuild(int id) {
-        return findInviteUsersByIdBuild(id);
+    public List<InviteBuild> findInviteByIdBuild(int id) {
+        return inviteBuildRepository.findInviteByIdBuild(id);
     }
 }

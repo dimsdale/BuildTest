@@ -1,9 +1,6 @@
-<!--
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
--->
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,14 +28,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
                 </div>
                 <div class="collapse navbar-collapse" id="menu">
                     <ul class="nav navbar-nav">
                         <li><a href="/">Main</a> </li>
-                        <li><a href="/new">New Build</a> </li>
+                        <li><a href="/new">New build</a> </li>
                         <li><a href="/logout">Logout</a></li>
-                        <li><a href="/my">My Builds</a></li>
                     </ul>
                     <form class="navbar-form pull-right" action="search" method="post">
                         <input type="text" class="span2 search-query" placeholder="Input text of search" />
@@ -52,15 +47,15 @@
 <div class="container">
     <div class="row">
         <sec:authorize access="isAuthenticated()">
-            <c:if test="${!empty builds}">
-                <table class="" cellspacing="10" width=80%>
+            <c:if test="${!empty mybuilds}">
+                <table class="" width=80%>
                     <tr>
                         <th>Description</th>
                     </tr>
-                    <c:forEach items="${builds}" var="build">
+                    <c:forEach items="${mybuilds}" var="build">
                         <tr>
                             <td>${build.description}</td>
-                            <td><a href="info/${build.id}">More..</a></td>
+                            <td><a href="my/${build.id}">Views</a></td>
                         </tr>
                     </c:forEach>
                 </table>

@@ -1,7 +1,6 @@
 package ua.sdo.model;
 
 
-import ua.sdo.annotations.FieldEquals;
 import ua.sdo.annotations.Phone;
 
 import javax.persistence.*;
@@ -13,10 +12,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-@FieldEquals(field = "password", equalsTo = "confirmPassword")
 public class User implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
     @Column(name = "login", unique = true)
     @Size(min = 3, max = 50)
     private String login;
@@ -35,10 +37,6 @@ public class User implements Serializable {
     @NotNull
     private String password;
 
-    @NotNull
-    @Transient
-    private String confirmPassword;
-
     @OneToMany(mappedBy = "owner")
     List<Build> builds = new ArrayList<Build>();
 
@@ -48,28 +46,12 @@ public class User implements Serializable {
     public User() {
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getPassword() {
+        return password;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
-    public List<Build> getBuilds() {
-        return builds;
-    }
-
-    public void setBuilds(List<Build> builds) {
-        this.builds = builds;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getFio() {
@@ -80,24 +62,44 @@ public class User implements Serializable {
         this.fio = fio;
     }
 
-    public String getLogin() {
-        return login;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User[login: " + login + ", password: " + password + ", fio: " + fio + "]";
+    public List<Build> getBuilds() {
+        return builds;
     }
-}
+
+    public void setBuilds(List<Build> builds) {
+        this.builds = builds;
+    }
+
+    public List<InviteBuild> getInviteBuilds() {
+        return inviteBuilds;
+    }
+
+    public void setInviteBuilds(List<InviteBuild> inviteBuilds) {
+        this.inviteBuilds = inviteBuilds;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    }
